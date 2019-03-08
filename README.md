@@ -5,7 +5,7 @@ Redux To Vuex
 安装
 =============
 ```js
-npm install redux-thunk
+npm install redux-to-vuex
 ```
 使用
 =============
