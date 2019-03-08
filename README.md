@@ -9,7 +9,7 @@ npm install redux-to-vuex
 ```
 使用
 =============
-如果你使用过dva那么redux-to-vuex跟他很像，但是redux-to-vuex只是改造actions、reducers,并没有重写，因此在类似taro这种项目中，不适合使用dva或者无法忍受redux复杂的书写，可以尝试使用redux-to-vuex。
+如果你使用过dva那么redux-to-vuex跟他很像，但是redux-to-vuex只是改造actions、reducers,并没有重写，因此在一些只使用原生redux的项目中（多数为小程序）或者无法忍受redux复杂的书写，可以尝试使用redux-to-vuex。
 
 **models/model**
 ```
