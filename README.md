@@ -63,7 +63,69 @@ const store = createStore(combineReducers(reduxTree.reducers), applyMiddleware(.
 export default store
 ```
 
-其他地方同使用 redux 一样！
+你的mian.js就想引入普通的store一样
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { Provider } from 'react-redux'
+import store from "./models"
+
+ReactDOM.render(<Provider store={store}>
+    <App />
+</Provider>, document.getElementById('root'));
+```
+在使用它的组件中如同使用redux一样
+```
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import './App.css';
+
+class App extends Component {
+    add = () => {
+        const { dispatch } = this.props;
+        dispatch({
+            type: "counter/add",
+            payload: "参数"
+        })
+    }
+    dec = () => {
+        const { dispatch } = this.props;
+        dispatch({
+            type: "counter/minus",
+            payload: "参数"
+        })
+    }
+    asyncAdd = () => {
+        const { dispatch } = this.props;
+        dispatch({
+            type: "counter/someEffect",
+            payload: "参数"
+        })
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className='todo'>
+                    <button className='add_btn' onClick={this.add}>+</button>
+                    <button className='dec_btn' onClick={this.dec}>-</button>
+                    <button className='dec_btn' onClick={this.asyncAdd}>async</button>
+                    <div>{this.props.count}</div>
+                </div>
+            </div>
+        );
+    }
+}
+const mapStateToProps = ({ counter }) => {
+    const { count } = counter;
+    return {
+        count
+    }
+}
+export default connect(mapStateToProps)(App);
+```
+这里有个[例子](https://github.com/gitlwz/redux-to-vuex/tree/master/example)可以让你更清楚如何使用redux-to-vuex
 ## License
 
 MIT
